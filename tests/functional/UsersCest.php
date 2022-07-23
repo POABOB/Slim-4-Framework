@@ -53,7 +53,14 @@ class UsersCest
         $I->sendGET('/api/user');
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseIsJson();
-        $I->seeResponseContains('{"code":200,"data":[{"id":"1","name":"Nick"}],"message":null}');
+        $I->seeResponseMatchesJsonType([
+            'code' => 'integer',
+            'message' => 'null',
+            'data' => [
+                "id" => 'integer|string',  
+                "name" => "string",
+            ]
+        ]);
 
         $I->sendPATCH('/api/user', ["id" => 1, "name" => "Bob"]);
         $I->seeResponseCodeIsSuccessful();
@@ -63,7 +70,14 @@ class UsersCest
         $I->sendGET('/api/user');
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseIsJson();
-        $I->seeResponseContains('{"code":200,"data":[{"id":"1","name":"Bob"}],"message":null}');
+        $I->seeResponseMatchesJsonType([
+            'code' => 'integer',
+            'message' => 'null',
+            'data' => [
+                "id" => 'integer|string',  
+                "name" => "string",
+            ]
+        ]);
 
         $I->amBearerAuthenticated($this->token);
         $I->haveHttpHeader('Content-Type', 'application/json');
