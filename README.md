@@ -95,19 +95,19 @@ JWT_PUBLIC_KEY="{PUBLIC_KEY}"
 
 ```
 composer install
-docker-compose up -d
+composer run start
 ```
 
 ### prod
 
 ```
 composer install --no-dev --optimize-autoloader
-docker-compose up -d
+composer run start
 ```
 
 ### test
 
 ```
 <!-- Before you test, please check out your vendor which was instlled. -->
-php vendor/bin/codecept run --steps
+composer run test
 ```
