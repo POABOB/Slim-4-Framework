@@ -1,5 +1,5 @@
 # SLIM 4 FRAMEWORK
-[![Build Status]](https://github.com/github/docs/actions/workflows/slim_test.yml/badge.svg)
+[![Build Status]](https://github.com/POABOB/Slim-4-Framework/actions/workflows/slim_test.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/POABOB/Slim-4-Framework/badge.svg?branch=main)](https://coveralls.io/github/POABOB/Slim-4-Framework?branch=main)
 
 ## Introduction
