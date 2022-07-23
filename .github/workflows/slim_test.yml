@@ -51,7 +51,9 @@ jobs:
     #   uses: ramsey/composer-install@v2
 
     - name: Tests
-      run: vendor/bin/codecept run --coverage --coverage-xml --coverage-html
+      run: |
+        vendor/bin/codecept clean
+        vendor/bin/codecept run --coverage --coverage-xml --coverage-html
       
     - name: Upload coverage results to Coveralls
       if: matrix.analysis
