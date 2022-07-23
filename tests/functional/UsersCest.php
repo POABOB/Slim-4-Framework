@@ -57,9 +57,11 @@ class UsersCest
             'code' => 'integer',
             'message' => 'null',
             'data' => [
-                "id" => 'integer|string',  
-                "name" => "string",
-            ]
+                [
+                    "id" => 'integer|string',  
+                    "name" => "string",
+                ]
+            ],
         ]);
 
         $I->sendPATCH('/api/user', ["id" => 1, "name" => "Bob"]);
@@ -74,9 +76,11 @@ class UsersCest
             'code' => 'integer',
             'message' => 'null',
             'data' => [
-                "id" => 'integer|string',  
-                "name" => "string",
-            ]
+                [
+                    "id" => 'integer|string',  
+                    "name" => "string",
+                ]
+            ],
         ]);
 
         $I->amBearerAuthenticated($this->token);
