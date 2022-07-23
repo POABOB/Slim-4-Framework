@@ -28,5 +28,9 @@
         "codeception/module-phpbrowser": "^2.0.0",
         "codeception/module-rest": "^2.0.0",
         "docler-labs/codeception-slim-module": "^3.0"
+    },
+    "scripts": {
+        "start": "docker-compose up -d",
+        "test": "php vendor/bin/codecept run --steps"
     }
 }
