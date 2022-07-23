@@ -5,7 +5,6 @@
     "require": {
         "catfan/medoo": "^2.1",
         "lcobucci/jwt": "^4.0",
-        "php-coveralls/php-coveralls": "^2.5",
         "php-di/php-di": "^6.4",
         "selective/basepath": "^2.1",
         "slim/http": "^1.0",

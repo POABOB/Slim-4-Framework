@@ -1,5 +1,7 @@
 # SLIM 4 FRAMEWORK
 
+[![Coverage Status](https://coveralls.io/repos/github/POABOB/Slim-4-Framework/badge.svg?branch=main)](https://coveralls.io/github/POABOB/Slim-4-Framework?branch=main)
+
 ## Introduction
 
 > This project was built with php SLIM 4 framework with ADR mode, whcich is a compatible resolution of RESTful Api.
@@ -53,7 +55,10 @@ CREATE TABLE IF NOT EXISTS `Example`.`Users` ( `id` INT UNSIGNED NOT NULL AUTO_I
 * Generate Secret Key for Jwt
 
 ```
-
+# Generate PRIVATE KEY
+openssl genrsa -out private.pem 2048
+# Generate PUBLIC KEY
+openssl genrsa -out private.pem 2048
 ```
 
 * .env/.env.test configuration
@@ -73,7 +78,7 @@ DB_CHARSET=utf8mb4
 
 # SQLITE CONFIG
 # DB_DRIVER=sqlite
-# DB_NAME={}./path/Example.db}
+# DB_NAME={./path/Example.db}
 
 # SETTINGS FOR DEBUG (0/1)
 # please don't display error details in production environment.
@@ -86,7 +91,7 @@ LOG_ERRORS=1
 JWT_ISSUER=SLIM_4
 JWT_LIFETIME=86400
 JWT_PRIVATE_KEY="{PRIVATE KEY}"
-JWT_PUBLIC_KEY="{PUBLIC_KEY}"
+JWT_PUBLIC_KEY="{PUBLIC KEY}"
 ```
 
 ## Run

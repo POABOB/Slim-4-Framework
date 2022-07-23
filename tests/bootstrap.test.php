@@ -8,7 +8,7 @@ use DI\ContainerBuilder;
 use Symfony\Component\Dotenv\Dotenv;
 use Slim\App;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 // 註冊我們設定好的CLASS
 $containerBuilder = new ContainerBuilder();

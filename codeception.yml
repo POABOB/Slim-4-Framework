@@ -14,10 +14,3 @@ actor_suffix: Tester
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
-        # - DoclerLabs\CodeceptionSlimModule\Module\Slim
-# modules:
-#     config:
-#         \Herloct\Codeception\Module\Slim:
-#             container: path/to/container.php
-#         REST:
-#             depends: \Herloct\Codeception\Module\Slim
