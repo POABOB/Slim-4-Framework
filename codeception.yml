@@ -1,0 +1,23 @@
+paths:
+    tests: tests
+    output: tests/_output
+    data: tests/_data
+    support: tests/_support
+    envs: tests/_envs
+coverage:
+    enabled: true
+    include:
+        - src/*
+    exclude:
+        - src/Action/Doc/*
+actor_suffix: Tester
+extensions:
+    enabled:
+        - Codeception\Extension\RunFailed
+        # - DoclerLabs\CodeceptionSlimModule\Module\Slim
+# modules:
+#     config:
+#         \Herloct\Codeception\Module\Slim:
+#             container: path/to/container.php
+#         REST:
+#             depends: \Herloct\Codeception\Module\Slim

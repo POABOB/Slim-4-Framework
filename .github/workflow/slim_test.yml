@@ -1,0 +1,62 @@
+## 幫這個 workflow 取名，預設為 .yml 檔名
+name: 'slim_test'
+
+## 監聽 main 分支若有 push 行為就執行 jobs
+## 也就是 workflow 的觸發條件，也有像是 schedule 等觸發條件
+## Docs: https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
+on:
+  push:
+    branches:
+    - main
+## 可以有多個 jobs，原則上會平行執行，若沒有則按照順序
+## job 也可以有多個 steps
+jobs:
+  ## 這邊 build 代表 job 的名稱
+  tests:
+    name: Tests PHP ${{ matrix.php }}
+    continue-on-error: ${{ matrix.experimental }}
+    ## 指定要運行的環境
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: [8.0, 8.1]
+        experimental: [false]
+        include:
+          - php: 8.0
+            analysis: true
+    ## 定義真正要執行的指令
+    ## name: 方便 debug，名字可以自己定義
+    ## uses: 直接使用其他開發者寫好的 actions
+    ## Docs: https://github.com/actions/checkout
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # 使用PHP8.0
+    - name: Use PHP ${{ matrix.php }}
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php }}
+        coverage: xdebug
+
+    # 驗證composer.json是否有誤
+    - name: Validate composer.json and composer.lock
+      run: composer validate
+
+    # 安裝依賴
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+    # - name: Install dependencies with Composer
+    #   uses: ramsey/composer-install@v2
+
+    - name: Tests
+      run: vendor/bin/codecept run --coverage --coverage-xml --coverage-html
+      
+    - name: Upload coverage results to Coveralls
+      if: matrix.analysis
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        composer require php-coveralls/php-coveralls -n -W
+        vendor/bin/php-coveralls --coverage_clover=clover.xml -v
