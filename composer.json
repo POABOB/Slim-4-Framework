@@ -1,8 +1,20 @@
 {
     "name": "poabob/slim-4-framework",
+    "type": "project",
     "description": "A Restful PHP Microservice Framework!",
+    "keywords": [
+        "slim-4-framework",
+        "slim-4-framework",
+        "slim",
+        "slim4",
+        "slim-4",
+        "nginx",
+        "microservice",
+        "restful"
+    ],
     "license": "MIT",
     "require": {
+        "php": "^8.0",
         "catfan/medoo": "^2.1",
         "lcobucci/jwt": "^4.0",
         "php-di/php-di": "^6.4",
