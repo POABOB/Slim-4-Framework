@@ -126,4 +126,13 @@ class UsersCest
         $I->seeResponseContains('{"code":401,"data":{"ID":["ID 無法為空"]},"message":"提交格式有誤!"}');
     }
 
+    public function DeleteUserWithioutToken(FunctionalTester $I): void
+    {
+        $I->haveHttpHeader('Content-Type', 'application/json');
+        $I->sendDelete('/api/user', ["id" => 1]);
+        $I->seeResponseCodeIsSuccessful();
+        $I->seeResponseIsJson();
+        $I->seeResponseContains('{"code":403,"data":null,"message":"請先登入"}');
+    }
+
 }
