@@ -2,6 +2,12 @@
     "name": "poabob/slim-4-framework",
     "type": "project",
     "description": "A Restful PHP Microservice Framework!",
+    "authors": [
+        {
+            "name": "POABOB",
+            "email": "zxc752166@gmail.com"
+        }
+    ],
     "keywords": [
         "slim-4-framework",
         "slim-4-framework",
@@ -14,7 +20,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.0",
+        "php": ">=8.0",
         "catfan/medoo": "^2.1",
         "lcobucci/jwt": "^4.0",
         "php-di/php-di": "^6.4",
