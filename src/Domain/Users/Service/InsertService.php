@@ -42,14 +42,22 @@ final class InsertService {
   {
     // Validation
     $this->v->validate(
-      ["姓名" => (!empty($data["name"]) ? $data["name"] : "")],
-      ["姓名" => ["required", "maxLen" => 64]]
+      [
+        "姓名" => (!empty($data["name"]) ? $data["name"] : ""),
+        "密碼" => (!empty($data["password"]) ? $data["password"] : ""),
+      ],
+      [
+        "姓名" => ["required", "maxLen" => 64],
+        "密碼" => ["required", "maxLen" => 64],
+      ]
     );
 
     // Invalid
     if($this->v->error()) {
       return $this->res->format(401, $this->v->error(),"提交格式有誤!");
     }
+
+    $data["password"] = md5($data["password"]);
 
     $this->repository->insertUser($data);
     return $this->res->format(200, "Success");

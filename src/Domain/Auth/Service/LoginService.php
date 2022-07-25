@@ -61,6 +61,7 @@ final class LoginService {
       return $this->res->format(401, $this->v->error(),"提交格式有誤!");
     }
 
+    $data["password"] = md5($data["password"]);
     
     // 查看登入
     $data = $this->repository->login($data);

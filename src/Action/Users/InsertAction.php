@@ -17,8 +17,9 @@ use App\Domain\Users\Service\InsertService;
  *          @OA\MediaType(
  *              mediaType="application/json",
  *              @OA\Schema(
- *                  required={"name"},
+ *                  required={"name", "password"},
  *                  @OA\Property(property="name", type="string(64)", example="Nick"),
+ *                  @OA\Property(property="password", type="string(64)", example="password"),
  *              )
  *          )
  *      ),

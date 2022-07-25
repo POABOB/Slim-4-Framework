@@ -36,7 +36,12 @@ class AuthCest
     public function Login(FunctionalTester $I): void
     {
         $I->haveHttpHeader('Content-Type', 'application/json');
-        $I->sendPOST('/api/login', ["name" => "Nick", "password" => "123456"]);
+        $I->sendPOST('/api/user', ["name" => "Bob", "password" => "123456"]);
+        $I->seeResponseCodeIsSuccessful();
+        $I->seeResponseIsJson();
+        $I->seeResponseContains('{"code":200,"data":null,"message":"Success"}');
+
+        $I->sendPOST('/api/login', ["name" => "Bob", "password" => "123456"]);
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseIsJson();
         $I->seeResponseMatchesJsonType([

@@ -8,15 +8,15 @@
 
 ### Feature
 
-* Framework - SLIM 4
-* Container - Docker
-  * Http Server - Nginx
-  * Database - MariaDB
-  * php8 - php-fpm
-* Test - Codeception
-* Api Document - Swagger-ui
-* ORM - Medoo
-* CI/CD - Github Actions
+* Framework - [SLIM 4](https://www.slimframework.com/)
+* Container - [Docker](https://www.docker.com/)
+  * Http Server - [Nginx](https://nginx.org/en/)
+  * Database - [MariaDB](https://mariadb.org/)
+  * php8 - [php-fpm](https://www.php.net/manual/en/install.fpm.php)
+* Test - [Codeception](https://codeception.com/)
+* Api Document - [Swagger-ui](https://swagger.io/tools/swagger-ui/)
+* ORM - [Medoo](https://medoo.in/)
+* CI/CD - [Github Actions](https://github.com/features/actions)
 
 ### Minimal requirements
 
@@ -34,7 +34,12 @@
 ```
 CREATE DATABASE IF NOT EXISTS Example;
 USE Example;
-CREATE TABLE IF NOT EXISTS `Example`.`Users` ( `id` INT UNSIGNED NOT NULL AUTO_INCREMENT , `name` TEXT NOT NULL, `password` TEXT NOT NULL ,  PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS `Example`.`Users` ( `id` INT UNSIGNED NOT NULL AUTO_INCREMENT , `name` VARCHAR(64) NOT NULL, `password` VARCHAR(64) NOT NULL ,  PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+-- FOR TEST
+CREATE DATABASE IF NOT EXISTS Example_test;
+USE Example_test;
+CREATE TABLE IF NOT EXISTS `Example_test`.`Users` ( `id` INT UNSIGNED NOT NULL AUTO_INCREMENT , `name` VARCHAR(64) NOT NULL, `password` VARCHAR(64) NOT NULL ,  PRIMARY KEY (`id`)) ENGINE = InnoDB;
 ```
 
 * DB config
@@ -58,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `Example`.`Users` ( `id` INT UNSIGNED NOT NULL AUTO_I
 # Generate PRIVATE KEY
 openssl genrsa -out private.pem 2048
 # Generate PUBLIC KEY
-openssl genrsa -out private.pem 2048
+openssl rsa -in private.pem -outform PEM -pubout -out public.pem
 ```
 
 * .env/.env.test configuration

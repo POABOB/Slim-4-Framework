@@ -28,14 +28,6 @@ class UsersCest
             "id" => ["INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT"],
             "name" => ["TEXT", "NOT NULL"]
         ]);
-
-        // LOGIN
-        $I->haveHttpHeader('Content-Type', 'application/json');
-        $I->sendPOST('/api/login', ["name" => "Nick", "password" => "123456"]);
-        $I->seeResponseCodeIsSuccessful();
-        $I->seeResponseIsJson();
-        list($data) = $I->grabDataFromResponseByJsonPath('$.data');
-        $this->token = $data["access_token"];
     }
 
     public function _after(FunctionalTester $I)
@@ -47,7 +39,7 @@ class UsersCest
     public function Users_CRUD(FunctionalTester $I): void
     {
         $I->haveHttpHeader('Content-Type', 'application/json');
-        $I->sendPOST('/api/user', ["name" => "Nick"]);
+        $I->sendPOST('/api/user', ["name" => "Nick", "password" => "123456"]);
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseIsJson();
         $I->seeResponseContains('{"code":200,"data":null,"message":"Success"}');
@@ -70,6 +62,13 @@ class UsersCest
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseIsJson();
         $I->seeResponseContains('{"code":200,"data":null,"message":"Success"}');
+
+        // LOGIN
+        $I->sendPOST('/api/login', ["name" => "Bob", "password" => "123456"]);
+        $I->seeResponseCodeIsSuccessful();
+        $I->seeResponseIsJson();
+        list($data) = $I->grabDataFromResponseByJsonPath('$.data');
+        $this->token = $data["access_token"];
 
         $I->sendGET('/api/user');
         $I->seeResponseCodeIsSuccessful();

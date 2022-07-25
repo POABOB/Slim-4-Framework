@@ -33,8 +33,7 @@ class AuthRepository {
   public function login(array | string $params = "*", array | int $where = 1, string $table = "Users"): array
   {
     try {
-      // return $this->db->select($table, $params, $where);
-      return ["name" => "USER"];
+      return $this->db->select($table, $params, $where);
     } catch (PDOException $e) {
       throw new UnexpectedValueException($e->getMessage());
     }
