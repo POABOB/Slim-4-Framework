@@ -43,6 +43,7 @@
     },
     "scripts": {
         "start": "docker-compose up -d",
-        "test": "php vendor/bin/codecept run --steps"
+        "test": "php vendor/bin/codecept run --steps",
+        "test-c": "php vendor/bin/codecept run --coverage --coverage-xml --coverage-html"
     }
 }
