@@ -1,6 +1,9 @@
 # SLIM 4 FRAMEWORK
+
 [![Build Status](https://github.com/POABOB/Slim-4-Framework/actions/workflows/build.yml/badge.svg)](https://github.com/POABOB/Slim-4-Framework/actions)
 [![Coverage Status](https://coveralls.io/repos/github/POABOB/Slim-4-Framework/badge.svg?branch=main)](https://coveralls.io/github/POABOB/Slim-4-Framework?branch=main)
+[![PHP Version Require](https://poser.pugx.org/poabob/slim-4-framework/require/php)](https://packagist.org/packages/poabob/slim-4-framework)
+[![License](https://poser.pugx.org/poabob/slim-4-framework/license)](https://packagist.org/packages/poabob/slim-4-framework)
 
 ## Introduction
 
@@ -25,6 +28,12 @@
 * composer
 
 ## Installation
+
+Run this command from the directory in which you want to install your new Slim application. You will require PHP 8.0 or newer.
+
+```
+composer create-project poabob/slim-4-framework [my-app]
+```
 
 ### Config
 
