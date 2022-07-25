@@ -26,7 +26,8 @@ class UsersCest
         // SQLITE 只需要 "PRIMARY KEY" 不需要主動添加 "AUTO_INCREMENT"
         $this->db->create("Users", [
             "id" => ["INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT"],
-            "name" => ["TEXT", "NOT NULL"]
+            "name" => ["TEXT", "NOT NULL"],
+            "password" => ["TEXT", "NOT NULL"],
         ]);
     }
 
@@ -103,7 +104,7 @@ class UsersCest
         $I->sendPOST('/api/user', []);
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseIsJson();
-        $I->seeResponseContains('{"code":401,"data":{"姓名":["姓名 無法為空"]},"message":"提交格式有誤!"}');
+        $I->seeResponseContains('{"code":401,"data":{"姓名":["姓名 無法為空"],"密碼":["密碼 無法為空"]},"message":"提交格式有誤!"}');
     }
 
     public function UpdateUserWithioutBody(FunctionalTester $I): void

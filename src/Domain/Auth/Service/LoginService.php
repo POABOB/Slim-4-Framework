@@ -64,7 +64,7 @@ final class LoginService {
     $data["password"] = md5($data["password"]);
     
     // 查看登入
-    $data = $this->repository->login($data);
+    $data = $this->repository->login("*", $data);
 
     if (!$data) {
       return $this->res->format(400, "帳號或密碼錯誤");
@@ -73,7 +73,7 @@ final class LoginService {
 
     // Transform the result into a OAuh 2.0 Access Token Response
     // https://www.oauth.com/oauth2-servers/access-tokens/access-token-response/
-    $token = $this->jwt->createJwt(["name" => $data["name"], "role" => "admin"]);
+    $token = $this->jwt->createJwt(["name" => $data[0]["name"], "role" => "admin"]);
     $lifetime = $this->jwt->getLifetime();
     $result = [
         "access_token" => $token,

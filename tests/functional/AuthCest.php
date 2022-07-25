@@ -23,7 +23,8 @@ class AuthCest
         // SQLITE 只需要 "PRIMARY KEY" 不需要主動添加 "AUTO_INCREMENT"
         $this->db->create("Users", [
             "id" => ["INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT"],
-            "name" => ["TEXT", "NOT NULL"]
+            "name" => ["TEXT", "NOT NULL"],
+            "password" => ["TEXT", "NOT NULL"],
         ]);
     }
 
