@@ -12,6 +12,7 @@ class ValidationTest extends \Codeception\Test\Unit
     // tests
     public function testValidation()
     {
+      // Valid
       $this->validation = new Validation();
       $this->assertEmpty($this->validation->validate(
           [
@@ -41,6 +42,7 @@ class ValidationTest extends \Codeception\Test\Unit
         )
       );
 
+      // InValid
       $this->validation = new Validation();
       $this->validation->validate(
         ["Min" => "B"],

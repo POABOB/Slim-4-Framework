@@ -26,10 +26,6 @@ jobs:
         include:
           - php: 8.0
             analysis: true
-        # DB:
-        #   DATABASE: Example_test
-        #   USER: root
-        #   PASS: root
 
     ## 定義真正要執行的指令
     ## name: 方便 debug，名字可以自己定義
@@ -38,21 +34,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-
-    # - name: Use Mariadb
-    #   uses: getong/mariadb-action@v1.1
-    #   with:
-    #     character set server: 'utf8mb4' # Optional, default value is 'utf8mb4'. The '--character-set-server' option for mysqld
-    #     collation server: 'utf8mb4_general_ci' # Optional, default value is 'utf8mb4_general_ci'. The '--collation-server' option for mysqld
-    #     mariadb version: ${{ matrix.mariadb }} # Optional, default value is "latest". The version of the MariaDB
-    #     mysql database: 'Example' # Optional, default value is "test". The specified database which will be create
-    #     mysql root password: root # Required if "mysql user" is empty, default is empty. The root superuser password
-    #     mysql user: 'root' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Can use secrets, too
-    #     mysql password: root # Required if "mysql user" exists. The password for the "mysql user"
-    # - name: Set up MySQL
-    #   run: |
-    #     sudo /etc/init.d/mysql start
-    #     mysql -e 'CREATE DATABASE ${{ matrix.DB.DATABASE }};' -u${{ matrix.DB.USER }} -p${{ matrix.DB.PASS }}
 
     # 使用PHP8.0
     - name: Use PHP ${{ matrix.php }}
@@ -68,8 +49,6 @@ jobs:
     # 安裝依賴
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
-    # - name: Install dependencies with Composer
-    #   uses: ramsey/composer-install@v2
 
     - name: Tests
       run: |

@@ -9,7 +9,7 @@
 
 > This project was built with php SLIM 4 framework with ADR mode, whcich is a compatible resolution of RESTful Api.
 
-### Feature
+### Features
 
 * Framework - [SLIM 4](https://www.slimframework.com/)
 * Container - [Docker](https://www.docker.com/)
@@ -24,7 +24,7 @@
 ### Minimal requirements
 
 * docker/docker-compose
-* php: ^8.0
+* php: >=8.0
 * composer
 
 ## Installation
@@ -44,11 +44,6 @@ composer create-project poabob/slim-4-framework [my-app]
 CREATE DATABASE IF NOT EXISTS Example;
 USE Example;
 CREATE TABLE IF NOT EXISTS `Example`.`Users` ( `id` INT UNSIGNED NOT NULL AUTO_INCREMENT , `name` VARCHAR(64) NOT NULL, `password` VARCHAR(64) NOT NULL ,  PRIMARY KEY (`id`)) ENGINE = InnoDB;
-
--- FOR TEST
-CREATE DATABASE IF NOT EXISTS Example_test;
-USE Example_test;
-CREATE TABLE IF NOT EXISTS `Example_test`.`Users` ( `id` INT UNSIGNED NOT NULL AUTO_INCREMENT , `name` VARCHAR(64) NOT NULL, `password` VARCHAR(64) NOT NULL ,  PRIMARY KEY (`id`)) ENGINE = InnoDB;
 ```
 
 * DB config
@@ -75,9 +70,9 @@ openssl genrsa -out private.pem 2048
 openssl rsa -in private.pem -outform PEM -pubout -out public.pem
 ```
 
-* .env/.env.test configuration
+* .env configuration
 
-> If you use sqlite for your database, juse commit mysql config.
+> If you use sqlite for your database, just commit mysql config.
 
 ```
 # dev/prod/stage/test

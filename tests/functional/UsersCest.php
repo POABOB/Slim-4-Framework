@@ -1,40 +1,26 @@
 <?php
 
-use Symfony\Component\Dotenv\Dotenv;
-use Medoo\Medoo;
-
-// TODO 將新增DB統一寫到Helper
+use Helper\Functional;
 
 class UsersCest
 {
-    private Medoo $db;
+    private Functional $helper;
 
     private string $token;
 
     public function __construct()
     {
-        // LOAD TEST ENV
-        $dotenv = new Dotenv();
-        $dotenv->load(__DIR__.'/../../.env.test');
-
-        // 測試前使用SQLITE 準備Users表
-        $this->db = new Medoo(['type' => $_ENV['DB_DRIVER'], 'database' => __DIR__ . "/../../" . $_ENV['DB_NAME']]);
+        $this->helper = new Functional();
     }
 
     public function _before(FunctionalTester $I)
     {
-        // SQLITE 只需要 "PRIMARY KEY" 不需要主動添加 "AUTO_INCREMENT"
-        $this->db->create("Users", [
-            "id" => ["INTEGER", "NOT NULL", "PRIMARY KEY", "AUTOINCREMENT"],
-            "name" => ["TEXT", "NOT NULL"],
-            "password" => ["TEXT", "NOT NULL"],
-        ]);
+        $this->helper->setUp();
     }
 
     public function _after(FunctionalTester $I)
     {
-        // 測試前使用SQLITE 準備Users表
-        $this->db->drop("Users");
+        $this->helper->tearDown();
     }
 
     public function Users_CRUD(FunctionalTester $I): void
