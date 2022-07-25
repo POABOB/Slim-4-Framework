@@ -26,10 +26,10 @@ jobs:
         include:
           - php: 8.0
             analysis: true
-        DB:
-          DATABASE: Example_test
-          USER: root
-          PASS: root
+        # DB:
+        #   DATABASE: Example_test
+        #   USER: root
+        #   PASS: root
 
     ## 定義真正要執行的指令
     ## name: 方便 debug，名字可以自己定義
@@ -49,10 +49,10 @@ jobs:
     #     mysql root password: root # Required if "mysql user" is empty, default is empty. The root superuser password
     #     mysql user: 'root' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Can use secrets, too
     #     mysql password: root # Required if "mysql user" exists. The password for the "mysql user"
-    - name: Set up MySQL
-      run: |
-        sudo /etc/init.d/mysql start
-        mysql -e 'CREATE DATABASE ${{ matrix.DB.DATABASE }};' -u${{ matrix.DB.USER }} -p${{ matrix.DB.PASS }}
+    # - name: Set up MySQL
+    #   run: |
+    #     sudo /etc/init.d/mysql start
+    #     mysql -e 'CREATE DATABASE ${{ matrix.DB.DATABASE }};' -u${{ matrix.DB.USER }} -p${{ matrix.DB.PASS }}
 
     # 使用PHP8.0
     - name: Use PHP ${{ matrix.php }}
