@@ -2,6 +2,7 @@
     "name": "poabob/slim-4-framework",
     "type": "project",
     "description": "A Restful PHP Microservice Framework!",
+    "homepage": "https://github.com/POABOB/Slim-4-Framework",
     "authors": [
         {
             "name": "POABOB",
